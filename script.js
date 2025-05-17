@@ -14,15 +14,15 @@ guessBtn.addEventListener("click",
             fetch(`https://api.genderize.io?name=${text}`)
                 .then((response) => response.json())
                 .then((data) => {
-                disableBtn()
-                displayFunc(data)
-               setTimeout(()=>{
-                enableBtn()
-               },4000)
-               console.log(2);
-               
+                    disableBtn()
+                    displayFunc(data)
+                    setTimeout(() => {
+                        enableBtn()
+                    }, 4000)
+                    
+
                 })
-displayFunc(data)
+            
         }
         else
             alert("Kindly Write a Name")
@@ -32,15 +32,17 @@ displayFunc(data)
 function displayFunc(data) {
 
     genderType.innerText = `${data.gender}`;
-   
+
 
 }
 function disableBtn() {
     document.getElementById("funBtn").disabled = true;
 
-     document.getElementById("funBtn").classList.add("disableBtn")
-    loader.disabled=false;
-    
+    document.getElementById("funBtn").classList.add("disableBtn")
+    document.getElementById("spinner").style.display = "block";
+    document.getElementById("mainBox").style.opacity = "0.2";
+
+
 
 
 }
@@ -48,8 +50,9 @@ function disableBtn() {
 function enableBtn() {
 
     document.getElementById("funBtn").disabled = false;
-     document.getElementById("funBtn").classList.remove("disableBtn")
-    loader.disabled=true;
+    document.getElementById("funBtn").classList.remove("disableBtn")
+    document.getElementById("spinner").style.display = "none";
+    document.getElementById("mainBox").style.opacity = "1";
 
 
 }
