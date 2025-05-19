@@ -169,9 +169,14 @@ body {
   transform: translate(-50%, -50%);
 }
    /* Text container styles */
+
    .result{
     /* border: 2px solid red; */
     margin-top: 40px;
+   }
+   #promoText{
+    margin-top: 55px;
+    /* border: 2px solid red; */
    }
    .genderValue{
     /* color: red; */
