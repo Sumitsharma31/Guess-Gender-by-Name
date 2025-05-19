@@ -7,12 +7,7 @@ let genderType = document.getElementById("genderType");
 const spinner = document.getElementById('spinner');
 
 
-
-
-
-guessBtn.addEventListener("click",
-
-    () => {
+   function guessFunc() {
         let text = userText.value;
         if (text) {
             disableBtn() 
@@ -22,7 +17,7 @@ guessBtn.addEventListener("click",
                 .then((response) => response.json())
                 .then((data) => {
                     spinOffFunc()
-                    console.log(data);
+                    // console.log(data);
                     displayFunc(data)
                    
                 })
@@ -31,7 +26,9 @@ guessBtn.addEventListener("click",
         else
             alert("Kindly Write a Name")
     }
-)
+
+
+guessBtn.addEventListener("click",guessFunc)
 
 function displayFunc(data) {
     const heading = document.createElement("h1");
@@ -51,34 +48,26 @@ function displayFunc(data) {
 function disableBtn() {
     document.getElementById("funBtn").disabled = true;
 
-    document.getElementById("funBtn").classList.add("disableBtn")
-
-    
-
-
-
-
+    document.getElementById("funBtn").classList.add("disableBtn");
 }
 
 function enableBtn() {
 
     document.getElementById("funBtn").disabled = false;
     document.getElementById("funBtn").classList.remove("disableBtn")
-
-   
-
-
 }
 const spinOnFunc = () => {
     spinner.classList.add('active');
-
-
-    
-    
-
 
 }
 const spinOffFunc = () => {
     spinner.classList.remove('active');
 
 }
+
+//to call back Guess Gender function on enter click
+userText.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    guessFunc()
+  }
+});
