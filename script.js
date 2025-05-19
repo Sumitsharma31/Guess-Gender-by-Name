@@ -39,10 +39,12 @@ function displayFunc(data) {
     heading.textContent =  `${data.gender}`;
    resultBox.appendChild(heading);
     const summary = document.createElement("p");
-    summary.textContent=`${data.name} is a ${data.gender} name. the probability of correction is ${(data.probability*100).toFixed(1)}% `;
+    summary.textContent=`The name ${data.name} is ${data.gender},With a ${(data.probability*100).toFixed(1)}% confidence level.`;
+    summary.className='summary';
      resultBox.appendChild(summary);
     userText.value='';
     enableBtn()
+    
 
 
 }
