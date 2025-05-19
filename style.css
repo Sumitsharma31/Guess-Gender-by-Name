@@ -153,9 +153,8 @@ body {
 
 
 .disableBtn {
-
-  opacity: 0.2;
-  cursor: none;
+  background-color: #f3f3f3;
+  
 }
 
 #genderType {
@@ -165,14 +164,10 @@ body {
   transform: translate(-50%, -50%);
 }
    /* Text container styles */
-    #data {
-      opacity: 0; /* Hidden by default */
-      transition: opacity 0.5s ease-in, transform 0.5s ease-in;
-      transform: translateY(20px); /* Start slightly below */
-    }
-
-    /* Animation class for text */
-    #data.animate {
-      opacity: 1;
-      transform: translateY(0); /* Slide up and fade in */
-    }
+   .genderValue{
+    /* color: red; */
+     font-family: "Playwrite DK Loopet", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+   }
