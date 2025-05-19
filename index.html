@@ -11,7 +11,9 @@
 </head>
 
 <body>
-    <div class="mainBox" >
+   
+
+    <div class="mainBox " id="mainBox">
         <div class="inputArea">
             <div class="input-container">
                 <input type="text" id="inputText" required />
@@ -19,16 +21,15 @@
                 <button id="funBtn">Guess</button>
             </div>
         </div>
+        <div id="spinner" class="spinner"></div>
         <div class="outputArea">
-            <h1 id="genderType">
+            <h1 id="genderType data">
                 Result
             </h1>
         </div>
 
     </div>
-   <div id="spinner" class="spinner" style="display: none;">
-    <span id="sr-only">Loading...</span>
-</div>
+
 
     <script src="script.js"></script>
 </body>
