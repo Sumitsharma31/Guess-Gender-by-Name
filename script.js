@@ -7,41 +7,49 @@ let genderType = document.getElementById("genderType");
 const spinner = document.getElementById('spinner');
 
 
-   function guessFunc() {
-        let text = userText.value;
-        if (text) {
-            disableBtn() 
-            spinOnFunc()
-            resultBox.innerHTML=''
-            fetch(`https://api.genderize.io?name=${text}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    spinOffFunc()
-                    // console.log(data);
-                    displayFunc(data)
-                   
-                })
+function guessFunc() {
+    let text = userText.value;
+    if (text) {
+        disableBtn()
+        spinOnFunc()
+        resultBox.innerHTML = ''
+        fetch(`https://api.genderize.io?name=${text}`)
+            .then((response) => response.json())
+            .then((data) => {
+                spinOffFunc()
+                console.log(data);
+                displayFunc(data)
 
-        }
-        else
-            alert("Kindly Write a Name")
+            })
+
     }
+    else
+        alert("Kindly Write a Name")
+}
 
 
-guessBtn.addEventListener("click",guessFunc)
+guessBtn.addEventListener("click", guessFunc)
 
 function displayFunc(data) {
+    if (data.gender == null) {
+        alert("Please Write a Name");
+        const summary = document.createElement("p");
+        summary.textContent = `--> One name, one guess: gender detection in action…`
+        summary.className = "promoText"
+        resultBox.appendChild(summary);
+        return;
+    }
     const heading = document.createElement("h1");
-    heading.className="genderValue"
-    heading.textContent =  `${data.gender}`;
-   resultBox.appendChild(heading);
+    heading.className = "genderValue"
+    heading.textContent = `${data.gender}`;
+    resultBox.appendChild(heading);
     const summary = document.createElement("p");
-    summary.textContent=`The name ${data.name} is ${data.gender},With a ${(data.probability*100).toFixed(1)}% confidence level.`;
-    summary.className='summary';
-     resultBox.appendChild(summary);
-    userText.value='';
+    summary.textContent = `The name ${userText.value} is ${data.gender},With a ${(data.probability * 100).toFixed(1)}% confidence level.`;
+    summary.className = 'summary';
+    resultBox.appendChild(summary);
+    userText.value = '';
     enableBtn()
-    
+
 
 
 }
@@ -66,8 +74,8 @@ const spinOffFunc = () => {
 }
 
 //to call back Guess Gender function on enter click
-userText.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    guessFunc()
-  }
+userText.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        guessFunc()
+    }
 });
